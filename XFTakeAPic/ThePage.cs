@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 
-namespace TakeAPicture
+namespace XFTakeAPic
 {
     class ThePage : ContentPage
     {
         public ThePage()
         {
-            Padding = new Thickness(
-                20, 
-                Device.OnPlatform(40, 20, 0), 
-                10, 
-                20);
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    Padding = new Thickness(20, 40, 20, 10);
+                    break;
+                default:
+                    Padding = new Thickness(20);
+                    break;
+            }
 
             var theButton = new Button
             {
@@ -26,6 +25,8 @@ namespace TakeAPicture
             theButton.Clicked += (sender, e) =>
             {
                 // Take the picture
+                var pictureTaker = DependencyService.Get<IPictureTaker>();
+                pictureTaker.SnapPic();
             };
 
             var theImage = new Image

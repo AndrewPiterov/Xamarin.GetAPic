@@ -8,7 +8,7 @@ namespace XFTakeAPic
         {
             InitializeComponent();
 
-            MainPage = new XFTakeAPicPage();
+            MainPage = new ThePage();
         }
 
         protected override void OnStart()

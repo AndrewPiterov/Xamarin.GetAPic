@@ -1,7 +1,7 @@
-﻿using System;
-namespace XFTakeAPic
+﻿namespace XFTakeAPic
 {
     public interface IPictureTaker
     {
+        void SnapPic();
     }
 }
